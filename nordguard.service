@@ -1,0 +1,15 @@
+[Unit]
+Description=NORD Guard Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=nordguard
+WorkingDirectory=/opt/nordguard
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/nordguard/venv/bin/python /opt/nordguard/nord_guard_bot.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
