@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: nord-guard
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python nord_guard_bot.py"
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: LOG_CHANNEL
+        sync: false
+      - key: AI_ENABLED
+        value: "true"
+      - key: AI_RISK_THRESHOLD
+        value: "60"
+      - key: AI_MAX_MSG_PER_MIN
+        value: "30"
+      - key: OPENAI_MODEL
+        value: "gpt-4o-mini"
+      - key: DATA_DIR
+        value: "/tmp/nordguard_data"
+      - key: RENDER
+        value: "true"
+    healthCheckPath: /health
